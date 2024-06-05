@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { getReservation } from "../supabase/getItems";
 import Cleave from "cleave.js/react";
+import Modal from "./Modal";
 
 export default function MyReservation() {
+  const [test, setTest] = useState(false);
   const [email, setEmail] = useState("");
   const [reservationNumber, setReservationNumber] = useState("");
   const [status, setStatus] = useState(null);
@@ -32,6 +34,34 @@ export default function MyReservation() {
   // test@gmail.com 0000-0000-0000
   return (
     <div className="w-full mb-16">
+      <Modal
+        isOpen={test}
+        close={() => setTest(false)}
+        title="Glemt Reservationsnummer?"
+      >
+        <div className="w-full flex flex-col">
+          <h2 class="self-start text-cph-blue mb-5">
+            Har du glemt dit reservationsnummer, og har brug for at få det
+            tilsendt?
+          </h2>
+          <input
+            type="email"
+            aria-label="email address"
+            content={email}
+            className="block w-full p-3 border border-grey-lighter rounded-md h-14"
+            placeholder="Din e-mailadresse"
+          />
+          <p className="text-small mb-5">
+            Den e-mail du brugte, da du foretog din reservation
+          </p>
+          <button
+            className="justify-self-center px-20 py-3 text-sm font-semibold text-cph-white bg-cph-blue rounded-md"
+            onClick={() => setTest(false)}
+          >
+            Tilsend
+          </button>
+        </div>
+      </Modal>
       <h2 className="mb-5 text-4 font-bold text-center text-cph-blue">
         Min Reservation
       </h2>
@@ -82,7 +112,10 @@ export default function MyReservation() {
           Vis min reservation
         </button>
 
-        <button className="self-center hover:underline">
+        <button
+          className="self-center hover:underline"
+          onClick={() => setTest(true)}
+        >
           Glemt dit reservationsnummer?
         </button>
       </div>
