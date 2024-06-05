@@ -71,12 +71,12 @@ export default function LostAndFoundItem({ item }) {
       </div>
 
       <div className="flex items-center">
-        <a
-          href="#"
+        <button
           className="text-white text-small border-[1px] border-grey-lighter font-medium rounded-lg text-sm px-2 py-1"
+          onClick={() => setTest(true)}
         >
           Claim
-        </a>
+        </button>
       </div>
     </div>
   );
