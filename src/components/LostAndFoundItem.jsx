@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Modal from "./Modal";
+
 const icons = {
   "Mindre Taske": (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -50,34 +53,115 @@ const icons = {
 };
 
 export default function LostAndFoundItem({ item }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
+
   return (
-    <div className="flex gap-3 p-3 rounded-md border-[1px] border-grey-lighter">
-      <div className="flex items-center">
-        <div className="flex justify-center items-center border-[1px] border-grey-light size-8 rounded-full bg-grey-lighter">
-          <div className="min-w-5 min-h-5 max-w-5 max-h-5">
-            {icons[item.item_type]}
+    <>
+      <Modal
+        title={`Claim ${item.item_name}`}
+        isOpen={isOpen}
+        close={() => setIsOpen(false)}
+        cardClasses="max-w-[500px]"
+      >
+        <h2 class="self-start text-cph-blue mb-5">
+          Du er ved at claime {item.item_name}, fyld venligst din e-mailadresse
+          og andre nødvendige informationer for at vi kan verificere at
+          genstanden er din.
+        </h2>
+
+        <div className="flex gap-3 p-3 rounded-md border-[1px] border-grey-lighter w-full ">
+          <div className="flex items-center">
+            <div className="flex justify-center items-center border-[1px] border-grey-light size-8 rounded-full bg-grey-lighter">
+              <div className="min-w-5 min-h-5 max-w-5 max-h-5">
+                {icons[item.item_type]}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-1 flex-col">
+            <h2 className="font-bold">{item.item_name}</h2>
+            <p className="text-grey-text text-small font-medium">
+              {item.item_location}, {item.item_date}
+            </p>
+            <p className="bg-grey-lighter w-fit rounded-lg border-[1px] border-grey-light text-smaller px-1 font-semibold mt-2">
+              {item.item_type}
+            </p>
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-1 flex-col">
-        <h2 className="font-bold">{item.item_name}</h2>
-        <p className="text-grey-text text-small font-medium">
-          {item.item_location}, {item.item_date}
+        <input
+          type="email"
+          value={email}
+          aria-label="email address"
+          className="block w-full p-3 border border-grey-lighter rounded-md h-14"
+          placeholder="Din e-mailadresse"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <p className="text-small mb-5 w-full text-grey-text">
+          Den e-mail kontakter vi for yderligere informationer.
         </p>
-        <p className="bg-grey-lighter w-fit rounded-lg border-[1px] border-grey-light text-smaller px-1 font-semibold mt-2">
-          {item.item_type}
-        </p>
-      </div>
 
-      <div className="flex items-center">
+        <h3 class="self-start text-cph-blue mb-5">
+          Vi har brug for yderligere informationer om {item.item_name}, for at
+          kunne verificere at det er din. <br />
+          <br /> Tilføj alt information du har der kan være relevant.
+        </h3>
+
+        <input
+          type="text"
+          value={text}
+          aria-label="email address"
+          className="block w-full p-3 border border-grey-lighter rounded-md h-14"
+          placeholder="Information om Genstanden"
+          onChange={(e) => setText(e.target.value)}
+        />
+        <p className="text-small mb-5 text-grey-text">
+          Tilføj gerne informationer om genstanden, så vi kan verificere at det
+          er din.
+        </p>
+
         <button
-          className="text-white text-small border-[1px] border-grey-lighter font-medium rounded-lg text-sm px-2 py-1"
-          onClick={() => setTest(true)}
+          className="justify-self-center px-20 py-3 text-sm font-semibold text-cph-white bg-cph-blue rounded-md"
+          onClick={() => setIsOpen(false)}
         >
-          Claim
+          Tilsend
         </button>
+      </Modal>
+
+      <div className="flex gap-3 p-3 rounded-md border-[1px] border-grey-lighter">
+        <div className="flex items-center">
+          <div className="flex justify-center items-center border-[1px] border-grey-light size-8 rounded-full bg-grey-lighter">
+            <div className="min-w-5 min-h-5 max-w-5 max-h-5">
+              {icons[item.item_type]}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-1 flex-col">
+          <h2 className="font-bold">{item.item_name}</h2>
+          <p className="text-grey-text text-small font-medium">
+            {item.item_location}, {item.item_date}
+          </p>
+          <p className="bg-grey-lighter w-fit rounded-lg border-[1px] border-grey-light text-smaller px-1 font-semibold mt-2">
+            {item.item_type}
+          </p>
+        </div>
+
+        <div className="flex items-center">
+          <button
+            className="text-white text-small border-[1px] border-grey-lighter font-medium rounded-lg text-sm px-2 py-1"
+            onClick={() => {
+              setEmail("");
+              setText("");
+              setIsOpen(true);
+            }}
+          >
+            Claim
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { useTransition, animated } from "@react-spring/web";
+import { clsx } from "../javascript/utils";
 
-export default function Modal({ title, isOpen, close, children }) {
+export default function Modal({ title, isOpen, close, children, cardClasses }) {
   const transitions = useTransition([isOpen], {
     from: { open: 0 },
     enter: { open: 1 },
@@ -21,9 +22,12 @@ export default function Modal({ title, isOpen, close, children }) {
           onClick={close}
         />
 
-        <div className="flex justify-center items-center w-full h-full pointer-events-none">
+        <div className="flex justify-center items-center w-full h-full pointer-events-none px-3">
           <animated.div
-            className="bg-cph-white flex flex-col shadow-card py-6 px-8 w-full max-w-[400px] justify-center items-center rounded-xl gap-2 pointer-events-auto"
+            className={clsx(
+              "bg-cph-white flex flex-col shadow-card py-6 px-8 w-full justify-center max-w-[400px] items-center rounded-xl gap-2 pointer-events-auto",
+              cardClasses
+            )}
             style={{
               transform: style.open
                 .to({
