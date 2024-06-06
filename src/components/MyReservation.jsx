@@ -27,7 +27,7 @@ export default function MyReservation() {
     }
 
     setStatus(
-      "Vi har fundet din reservation, og har sendt en email med detaljerne."
+      "Vi har fundet din reservation, og har sendt en email med detaljerne.",
     );
   };
 
@@ -40,7 +40,7 @@ export default function MyReservation() {
         title="Glemt Reservationsnummer?"
       >
         <div className="w-full flex flex-col">
-          <h2 class="self-start text-cph-blue mb-5">
+          <h2 className="self-start text-cph-blue mb-5">
             Har du glemt dit reservationsnummer, og har brug for at få det
             tilsendt?
           </h2>

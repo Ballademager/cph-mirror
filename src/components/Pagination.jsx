@@ -25,9 +25,9 @@ const Pagination = ({ currentPage, totalCount, pageSize, onPageChange }) => {
             >
               <path
                 fill="currentColor"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M3.22 7.595a.75.75 0 0 0 0 1.06l3.25 3.25a.75.75 0 0 0 1.06-1.06l-2.72-2.72l2.72-2.72a.75.75 0 0 0-1.06-1.06zm8.25-3.25l-3.25 3.25a.75.75 0 0 0 0 1.06l3.25 3.25a.75.75 0 1 0 1.06-1.06l-2.72-2.72l2.72-2.72a.75.75 0 0 0-1.06-1.06"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </button>
@@ -41,7 +41,7 @@ const Pagination = ({ currentPage, totalCount, pageSize, onPageChange }) => {
                 "bg-gray-300 text-black": page === currentPage,
                 "bg-white text-gray-700 hover:bg-gray-50": page !== currentPage,
                 "border-l border-grey-light": i > 0,
-              }
+              },
             )}
             onClick={() => onPageChange(page)}
           >
@@ -60,9 +60,9 @@ const Pagination = ({ currentPage, totalCount, pageSize, onPageChange }) => {
             >
               <path
                 fill="currentColor"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72l-2.72-2.72a.75.75 0 0 1 1.06-1.06zm-8.25-3.25l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72l-2.72-2.72a.75.75 0 0 1 1.06-1.06"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </button>
