@@ -49,10 +49,6 @@ export default function LostAndFound() {
 
   return (
     <section className="px-10 max-w-[1024px] w-full mx-auto">
-      <Modal isOpen={test} close={() => setTest(false)} title="Test Mod">
-        Hi :3
-      </Modal>
-
       <LostAndFoundCard className="w-full min-h-[480px]">
         <div className="flex w-full gap-3">
           <Drop
@@ -123,8 +119,6 @@ export default function LostAndFound() {
               }
             }}
           />
-
-          <button onClick={() => setTest(true)}>Test</button>
         </div>
 
         <div className="grid w-full gap-3 md:grid-cols-2 grid-cols-1 ">
