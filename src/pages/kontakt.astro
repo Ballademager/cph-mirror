@@ -7,8 +7,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import WrongPage from "../components/WrongPage.astro";
 import Hero from "../components/Hero.astro";
 import heroImage from "../images/heroKontakt.webp";
-import ContactForm from "../components/ContactForm.astro";
-import Contact from "../components/Contact.astro";
+import Contact from "../components/Contact.jsx";
 import Form from "../components/Form.jsx";
 
 changeLanguage("da");
@@ -22,8 +21,8 @@ changeLanguage("da");
     heroImageAlt="Kontakt os Billede"
   />
   <main>
-    <Form client:load/>
-    <div class="my-12"><Contact /></div>
+    <Form client:load />
+    <div class="my-12"><Contact client:load /></div>
     <WrongPage />
   </main>
 </MainLayout>
