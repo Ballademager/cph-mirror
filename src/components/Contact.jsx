@@ -54,7 +54,7 @@ function Contact() {
         <div className="line">
           <img src="/phone.svg" alt="" />
           <a target="_blank" href="tel:+4561318424">
-            +45 61 31 84 24
+            +45 23 11 93 04
           </a>
         </div>
       </div>
